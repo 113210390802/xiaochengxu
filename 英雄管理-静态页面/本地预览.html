@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./imgs/48b48a7643cf8a6094809c45b159acdf" alt="" id="pic">
+    <input type="file" id="file">
+    <script>
+    
+    var pic = document.getElementById('pic');
+    var file = document.getElementById('file');
+    file.onchange = function () {
+        var str = URL.createObjectURL(file.files[0]);
+        pic.src = str;
+    }
+    
+    
+    
+    
+    </script>
+</body>
+</html>

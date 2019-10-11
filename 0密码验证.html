@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+  
+  span {
+    color: red;
+  }
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+  
+  .wrong {
+    color: red
+  }
+  
+  .right {
+    color: green;
+  }
+  
+  .strengthLv0 {
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv1 {
+    background: red;
+    height: 6px;
+    width: 40px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv2 {
+    background: orange;
+    height: 6px;
+    width: 80px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+  
+  .strengthLv3 {
+    background: green;
+    height: 6px;
+    width: 120px;
+    border: 1px solid #ccc;
+    padding: 2px;
+  }
+</style>
+<body>
+<div class="container">
+  <label>密码</label>
+  <!-- 输入框 -->
+  <input type="text" id="ipt" maxlength="16">
+  <div class="pass-wrap">
+    <em>密码强度：</em>
+    <!-- 强度等级内容区域 -->
+    <em id="strength"></em>
+    <!-- 强度等级条类名操作区域 -->
+    <div id="strengthLevel" class="strengthLv0"></div>
+  </div>
+</div>
+<script>
+  /*
+    功能分析：
+      - 采用的事件：keyup事件(因为要进行内容操作)
+      - #strength 用于显示强度文字
+        - 对应内容种类个数：  0 ''  1 '弱' 2 '中' 3 '强'
+      - #strengthLevel 用于显示强度等级条
+        - 类名与内容种类个数对应：
+          - 0种 .strengthLv0
+          - 1种 .strengthLv1
+          - 2种 .strengthLv2
+          - 3种 .strengthLv3
+      - 需要进行的第一步操作就是先检测当前内容中的内容种类个数
+      - 根据种类个数进行底部显示内容展示即可
+  */
+
+  // 实现：
+  // 1 获取元素
+  var ipt = document.getElementById('ipt');
+  var strength = document.getElementById('strength');
+  var strengthLevel = document.getElementById('strengthLevel');
+
+  var arr = ['', '弱', '中', '强'];
+
+  // 2 给输入框设置事件
+  //   - 如果用户进行鼠标操作，keyup无法触发，可以使用oninput事件
+  ipt.oninput = function () {
+  // ipt.onkeyup = function () {
+    // 检测输入的内容长度是否小于6位
+    if (this.value.length < 6) {
+      // 为了在删除后不足6位时还原为默认内容
+      strengthLevel.className = 'strengthLv0';
+      strength.innerText = '';
+      return; // 不足6位，不需要执行检测
+    }
+    // 3 检测内容种类个数 (数字、小写字母、大写字母)
+    var count = 0; // 用于统计个数
+    // 三种检测都要执行，不能使用if..else if..else if..
+    //  - 必须采用三个单if结构
+    if ( /[0-9]/.test(this.value) ) {
+      count++;
+    }
+    if ( /[a-z]/.test(this.value) ) {
+      count++;
+    }
+    if ( /[A-Z]/.test(this.value) ) {
+      count++;
+    }
+    // 根据count的值设置底部的展示内容
+    strengthLevel.className = 'strengthLv' + count;
+    strength.innerText = arr[count];
+  };
+
+
+</script>
+</body>
+</html>

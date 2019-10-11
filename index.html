@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            width: 800px;
+        }
+
+        th,
+        td {
+            border: 1px solid #222;
+            background-color:ye;
+        }
+    </style>
+</head>
+
+<body>
+    <p>请输入姓名：<input type="text" class="btn1"></p>
+    <p>请输入邮箱：<input type="text" class="btn2"></p>
+    <p>请输入手机：<input type="text" class="btn3"></p>
+    <p>请输入地址：<input type="text" class="btn4"></p>
+    <input type="button" value="添加" id="btn">
+
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>邮箱</th>
+
+                <th>手机</th>
+
+                <th>地址</th>
+            </tr>
+
+
+
+        </thead>
+        <tbody>
+           
+
+
+        </tbody>
+
+
+    </table>
+    <script>
+        var text1 = document.querySelector('.btn1')
+        var text2 = document.querySelector('.btn2')
+        var text3 = document.querySelector('.btn3')
+        var text4 = document.querySelector('.btn4')
+        var tbody = document.querySelector('tbody')
+        var btn = document.getElementById('btn');
+        var i = 0;
+        btn.onclick = function () {
+            i++
+            if (text1.value == ''||text2.value == ''||text3.value == ''||text4.value == '') {
+                alert('请将数据填入完全')
+            }else{
+               var tr = document.createElement('tr');
+            tbody.appendChild(tr);
+            var td1 = document.createElement('td');
+            td1.innerText = text1.value;
+            tr.appendChild(td1) 
+            var td2 = document.createElement('td');
+            td2.innerText = text2.value;
+            tr.appendChild(td2) 
+            var td3 = document.createElement('td');
+            td3.innerText = text3.value;
+            tr.appendChild(td3) 
+            var td4 = document.createElement('td');
+            td4.innerText = text4.value;
+            tr.appendChild(td4) 
+            if(i%2 ==  0 ){
+                tr.style.background = 'yellow'
+            }else{
+                tr.style.background = 'red'
+            }
+             
+           
+            }
+          
+            text1.value == ''
+            text2.value == ''
+            text3.value == ''
+            text4.value == ''
+
+        };
+        
+
+
+
+    </script>
+
+</body>
+
+</html>

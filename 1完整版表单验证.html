@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+  
+  span {
+    color: red;
+  }
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+  
+  .wrong {
+    color: red
+  }
+  
+  .right {
+    color: green;
+  }
+  
+  .defau {
+    width: 200px;
+    height: 20px;
+  }
+  
+  .de1 {
+    background-position: 0 -20px;
+  }
+</style>
+<body>
+<div class="container">
+  <label>Q Q</label><input type="text" id="inp1"><span></span><br/>
+  <label>手机</label><input type="text" id="inp2"><span></span><br/>
+  <label>邮箱</label><input type="text" id="inp3"><span></span><br/>
+  <label>座机</label><input type="text" id="inp4"><span></span><br/>
+  <label>姓名</label><input type="text" id="inp5"><span></span><br/>
+</div>
+<script>
+  // 设置正则进行内容匹配:
+  //    - 前端进行正则匹配的目的：进行基本的格式验证
+  //      - 后续将验证过格式的内容传递给服务端，进行有效性验证。
+
+  // qq号：
+  //   规则：5-11位数字，首位不能为0
+  //   /^[1-9]\d{4,10}$/
+
+  // 手机号：作业
+
+  // 座机：
+  //   规则：区号 + 电话号
+  //    区号：3或4位数字，首位为0
+  //    电话：7或8位数字，首位不能为0
+  //  /^0\d{2,3}-[1-9]\d{6,7}$/;
+
+  // 姓名：
+  //   规则：中文2到4位
+  // /^[\u4e00-\u9fa5]{2,4}$/
+
+  // 邮箱：
+  //  规则：用户名@域名部分
+  //   - 例如邮箱，每个内容区域的内容组成情况有多种，不同的公司中的实际使用情况也不同
+  //   - 书写时通常书写的是'通用规则'
+  //   - 实际应用时，根据具体的场景，将通用规则中的每个部分进行修改
+  //      - 修改每部分的内容和量词
+
+  //  网上搜索的正则不要拿过来直接用，需要进行具体修改。
+
+  /* /^\w+@\w+\.\w+(\.\w+)*$/;
+  /^\w+@\w+(\.\w+)+$/;
+
+  /^[a-z]{6,12}@qq.com$/;
+  /^[1-9]\d{4,10}@qq.com$/;
+  
+  /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+  // nigulasi+zhaosi@white-house.c-om.cn.xxxx */
+
+
+
+
+</script>
+</body>
+</html>

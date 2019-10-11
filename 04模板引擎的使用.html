@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title><style>
+    
+     h1{
+         color: red;
+     }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+
+    <script src="./template-web.js"></script>
+
+    <!-- 设置一个模板，用于一会儿的结构创建操作 -->
+    <!-- 
+        模板中，如果需要书写模板语法，需要使用 {{ }} 包裹
+        - {{$data}}  这段内容代表的是template()传入的数据值
+        - {{$data.name}} 代表访问传入数据中的name属性值
+        - {{name}} 与上面的功能相同，推荐书写这种方式
+        - {{each 要遍历的数据}}    {{/each}}
+        - {{$value}} 在each内表示属性值
+        - {{$index}} 在each内表示属性名
+
+     -->
+    <script type="text/template" id="hero">
+        {{each $data}}
+            <div>
+                <h1 class="name">{{$value.name}}</h1>
+                <p class="gender">{{$value.gender}}</p>
+                <p class="intro">{{$value.intro}}</p>
+            </div>
+        {{/each}}
+
+        
+    </script>
+
+
+    <script>
+        // 模板引擎是一个用来进行结构创建的js库
+        // art-template 是一个非常流行的js库
+
+        // 使用步骤：
+        //  1 引入文件
+        //  2 设置模板
+        //      - 设置script标签，并设置type属性
+        //      - 好处：书写结构比较方便、不会出现换行的影响
+        //  3 传入对应的数据生成实际使用的结构
+        //      - 调用art-template提供的 template()
+        //          - 参数1：模板的id
+        //          - 参数2：准备的数据
+        //      - 返回值为生成后的结构
+        
+        // 自己设置一套数据，用来进行模板的结构生成
+        var datas = [
+            {
+                name : '张三',
+                gender : '女',
+                intro : '张三是一个战士，有一把大宝剑，四处砍怪'
+            },
+            {
+                name : '提莫',
+                gender : '男',
+                intro : '提莫也是一个战士，也有一把大宝剑，也能四处砍怪'
+            },
+            {
+                name : '洛',
+                gender : '男',
+                intro : '洛是一个妖娆的美男子，有一个美丽的女朋友，名字叫做霞'
+            },
+        ];
+
+        // 调用模板的方法，生成结构文本
+        var htmlStr = template('hero', datas);
+        console.log(htmlStr);
+        
+        var box = document.getElementById('box');
+        box.innerHTML = htmlStr;
+        
+    </script>
+</body>
+</html>

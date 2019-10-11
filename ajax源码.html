@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            //创建实例对象
+            var xhr = new XMLHttpRequest();
+            //建立与服务器连接
+            // xhr.open('get','https://autumnfish.cn/api/joke');
+            xhr.open('get','https://autumnfish.cn/api/joke/list?num=3');
+
+            //调用send方法发送请求
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 ){
+                  
+                    console.log(xhr.responseText);
+                    console.log(JSON.parse(xhr.responseText));
+                   
+                }
+            }
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+</body>
+</html>

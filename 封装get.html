@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function get(diaomao) {
+            //创建实例对象
+            var xhr = new XMLHttpRequest();
+            //建立与服务器连接
+            // xhr.open('get','https://autumnfish.cn/api/joke');
+            if (diaomao.data) {
+                diaomao.url = diaomao.url + '?' + diaomao.data
+            }
+            xhr.open('get', diaomao.url);
+
+            //调用send方法发送请求
+            xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if( typeof  diaomao.success  == 'function'){
+                        
+                            diaomao.success(xhr.responseText)
+                    }
+
+
+                }
+            }
+        };
+        get( {
+            url: 'https://autumnfish.cn/api/joke/list',
+            data: 'num = 4',
+            success: function (res) {
+                console.log(res)
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

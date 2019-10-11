@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script>
+        var obj = {
+            name : 'jack',
+            age : 18
+        }
+
+        var obj2 = {
+            hobbies : {
+                eat : '吃',
+                run : '跑步'
+
+            }
+        }
+
+
+
+
+        var reulst =    $.extend(true, {},obj,obj2);
+        console.log(reulst)
+    </script>
+</body>
+</html>

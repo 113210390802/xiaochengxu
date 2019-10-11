@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+    //     var sum = 0
+    //  function fun (){
+
+    //      console.log('hehehe');
+    //      sum++;
+    //      if(sum === 10 ){
+    //          return;
+    //      }
+    //      fun();
+    //  }
+    //  fun();
+    
+    var obj ={
+        1 : 1,
+        2 : 1 ,
+    };
+
+    function fun(n){
+        if(obj[n]){
+            return obj[n]
+        }else{
+            obj[n] = fun(n-1)+fun(n-2);
+            return obj[n]
+        }
+    };
+   console.log(fun(999)) ;
+    
+   console.log(fun(3)) ;
+    </script>
+</body>
+</html>
